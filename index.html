@@ -66,8 +66,8 @@
     .date-pill select#yearSelect{width:32px;max-width:32px}
     .month-nav{background:transparent;border:0;box-shadow:none;color:var(--ink);font-size:19px;font-weight:800;line-height:1;padding:2px 5px;min-height:auto;cursor:pointer}
     .month-nav:active{transform:translateY(1px)}
-    .metric-total{font-weight:800;color:var(--accent)}
-    .modal-total{margin:2px 0 10px}
+    .metric-total{font-weight:400;color:var(--accent);margin-top:9px}
+    .modal-total{margin:12px 0 12px}
     .tracker-actions{margin-top:10px;justify-content:flex-start}
     .cal-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
     .cal-nav-label{font-weight:800;font-size:15px}
@@ -215,7 +215,7 @@
     .balance-slider input[type=range]{flex:1}
     .balance-slider strong{width:24px;text-align:right;font-size:14px}
     .balance-actions{display:flex;gap:8px;margin-top:12px}
-    .pill.metric-type{display:flex;width:fit-content;margin:2px 0 16px}
+    .pill.metric-type{display:flex;width:fit-content;margin:2px 0 12px}
     .pill.success-gift{margin-top:12px}
     .success-detail-title{font-size:16px}
     .success-gift-label{font-size:14px}
@@ -349,7 +349,7 @@
     function mediaCard(obj,empty){if(!obj)return`<div class="empty">${empty}</div>`;return`<div class="media-row"><div><b>${obj.title}</b><div class="tiny">${obj.author||obj.director||'не указано'}</div></div></div>`}
     function renderCurrentMedia(){const book=data.books.find(b=>b.id===data.currentBookId&&b.status!=='прочитано');const watch=data.watches.find(w=>w.id===data.currentWatchId&&w.status!=='закончен');currentBook.innerHTML=mediaCard(book,'Нет активной книги');currentWatch.innerHTML=mediaCard(watch,'Нет активного просмотра')}
     function swipeCard(html,delAction,id,openAction){return`<div class="swipe"><div class="swipe-content ${openAction?'clickable':''}" ${openAction?`data-action="${openAction}" data-id="${id}"`:''}>${html}</div></div>`}
-    function renderPulse(){renderMini();customMetrics.innerHTML=data.metrics.map(m=>swipeCard(`<b>${m.name}</b><div class="tiny">${metricTypeLabel(m)}</div>${m.type!=='текст'?`<div class="tiny metric-total">${metricMonthTotalLabel(m.type,m.unit,m.values)}</div>`:''}<div class="field">${m.type==='да/нет'?`<select data-metric="${m.id}"><option value=""></option><option ${m.values?.[key()]==='да'?'selected':''}>да</option><option ${m.values?.[key()]==='нет'?'selected':''}>нет</option></select>`:`<input data-metric="${m.id}" placeholder="Значение${m.unit?' · '+m.unit:''}" value="${m.values?.[key()]||''}">`}</div>`,'deleteMetric',m.id,'openMetric')).join('')||'<div class="empty">Свои метрики еще не добавлены</div>'}
+    function renderPulse(){renderMini();customMetrics.innerHTML=data.metrics.map(m=>swipeCard(`<b>${m.name}</b><div class="tiny">${metricTypeLabel(m)}</div><div class="field">${m.type==='да/нет'?`<select data-metric="${m.id}"><option value=""></option><option ${m.values?.[key()]==='да'?'selected':''}>да</option><option ${m.values?.[key()]==='нет'?'selected':''}>нет</option></select>`:`<input data-metric="${m.id}" placeholder="Значение${m.unit?' · '+m.unit:''}" value="${m.values?.[key()]||''}">`}</div>${m.type!=='текст'?`<div class="tiny metric-total">${metricMonthTotalLabel(m.type,m.unit,m.values)}</div>`:''}`,'deleteMetric',m.id,'openMetric')).join('')||'<div class="empty">Свои метрики еще не добавлены</div>'}
     function checkTrackerSuccess(t){moveCompletedTrackers()}
     function renderTrackers(){moveCompletedTrackers();trackerList.innerHTML=(data.trackers||[]).map(t=>{const n=(t.days||[]).length,pct=Math.round(Math.min(100,n/(t.target||1)*100)),done=isTrackerComplete(t);if(t.pending)return `<div class="swipe"><div class="swipe-content tracker-pending"><div class="section-title goal-head"><h3 class="goal-title">${t.title}</h3><strong>${pct}%</strong></div><div class="tiny goal-dates">${periodLabel(t.periodKey)}: ${n}/${t.target}${done?' · выполнено 🎉':''}</div><div class="progress"><i style="width:${pct}%"></i></div><p class="hint">Новый месяц — повтори привычку или удали</p><div class="modal-actions tracker-actions"><button type="button" class="btn-del ${armedTracker===t.id?'confirming':''}" data-action="askDeleteTracker" data-id="${t.id}">${armedTracker===t.id?'Точно удалить?':'Удалить'}</button><button class="btn" data-action="repeatTracker" data-id="${t.id}">Повторить</button></div></div></div>`;return swipeCard(`<div class="section-title goal-head"><h3 class="goal-title">${t.title}</h3><strong>${pct}%</strong></div><div class="tiny goal-dates">Цель: ${t.target} из ${daysInMonth()} дней · прогресс ${n}/${t.target}</div><div class="progress"><i style="width:${pct}%"></i></div><p class="hint">Подарок: ${t.reward||'не задан'}</p>`,'deleteTracker',t.id,'openTracker')}).join('')||'<div class="empty">Трекеров пока нет</div>';successList.innerHTML=`<div class="flat-card folder-card clickable" data-action="openSuccessArchive"><div class="folder-mark">A</div><div><b>Мои успехи</b><div class="tiny">${(data.trackerSuccess||[]).length} ${ruCount((data.trackerSuccess||[]).length,['достижение','достижения','достижений'])} внутри</div></div></div>`}
     function balanceArc(cx,cy,r1,r2,a0,a1){const rad=a=>(a-90)*Math.PI/180,p=(r,a)=>`${cx+r*Math.cos(rad(a))},${cy+r*Math.sin(rad(a))}`;const large=a1-a0>180?1:0;return `M${p(r2,a0)} A${r2},${r2} 0 ${large} 1 ${p(r2,a1)} L${p(r1,a1)} A${r1},${r1} 0 ${large} 0 ${p(r1,a0)} Z`}
