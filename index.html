@@ -83,7 +83,7 @@
     .list-head-left{display:flex;align-items:center;gap:9px;min-width:0}
     .list-move{background:transparent;border:0;box-shadow:none;padding:0;min-height:auto;cursor:pointer;flex:0 0 auto}
     .list-card.picked{border-color:var(--accent)}
-    .list-card.picked .move-ic,.list-move.picked .move-ic{background:var(--accent);color:#FFF5F8;border-color:var(--ink)}
+    .list-card.picked .move-ic,.list-move.picked .move-ic{color:var(--accent);font-weight:800}
     .list-done-badge{color:var(--green);font-weight:600;margin-top:6px}
     .list-add{display:flex;gap:8px;align-items:center;margin:14px 0 4px}
     .list-add input{flex:1}
@@ -262,9 +262,9 @@
     .balance-hint:not(.tiny){color:var(--accent);font-weight:700}
     .balance-move{display:flex;align-items:center;gap:7px;background:transparent;border:0;box-shadow:none;padding:0;min-height:auto;text-align:left;color:var(--ink)}
     .balance-move b{font-weight:700}
-    .balance-move .move-ic{display:inline-grid;place-items:center;width:22px;height:22px;flex:0 0 auto;border-radius:7px;background:var(--green-soft);border:1.2px solid rgba(30,27,22,.5);font-size:12px;color:var(--ink)}
+    .move-ic{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;font-size:15px;color:var(--ink);line-height:1}
     .balance-sector.picked{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent),2px 2px 0 rgba(30,27,22,.55)}
-    .balance-sector.picked .move-ic{background:var(--accent);color:#FFF5F8;border-color:var(--ink)}
+    .balance-sector.picked .move-ic{color:var(--accent);font-weight:800}
     .balance-delete{display:block;width:100%;text-align:center;padding:11px;margin:14px 0 16px;border:1.2px solid rgba(179,38,30,.4);border-radius:999px}
     #modalBody .balance-delete + #simpleSave{width:100%}
 
