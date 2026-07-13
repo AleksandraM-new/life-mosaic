@@ -40,7 +40,7 @@
 
     /* ---------- 2. База и типографика ---------- */
     *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-    html,body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Arial,sans-serif;touch-action:manipulation}
+    html,body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Arial,sans-serif;font-variant-numeric:tabular-nums;touch-action:manipulation}
     /* клетчатый «наивный» фон в шалфейных тонах */
     body{-webkit-font-smoothing:antialiased;overscroll-behavior:none;overflow-x:hidden;background:conic-gradient(#EDF2E0 90deg,#DDE7CC 90deg 180deg,#EDF2E0 180deg 270deg,#DDE7CC 270deg) 0 0/56px 56px fixed}
     button,input,textarea,select{font:inherit;color:inherit}
@@ -71,8 +71,9 @@
     input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;appearance:none;margin:0}
     input[type=number]{-moz-appearance:textfield;appearance:textfield}
     .tracker-actions{margin-top:10px;justify-content:flex-start}
-    .cal-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-    .cal-nav-label{font-weight:800;font-size:15px}
+    .cal-body{display:flex;align-items:center;gap:2px}
+    .cal-grid-wrap{flex:1;min-width:0}
+    .cal-arrow{flex:0 0 auto;font-size:26px;padding:6px 3px;color:var(--ink)}
     .list-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid rgba(30,27,22,.12)}
     .list-check{flex:0 0 auto;width:24px;height:24px;border:1.6px solid var(--ink);border-radius:7px;background:var(--paper);cursor:pointer;display:grid;place-items:center;padding:0;min-height:auto;box-shadow:none}
     .list-check.done{background:var(--green);border-color:var(--green)}
@@ -107,7 +108,7 @@
     /* кнопки: служебные — скромнее текста, главные — малиновые */
     .btn{min-height:44px;padding:11px 16px;border-radius:999px;background:var(--accent);color:#FFF5F8;font-weight:800;font-size:14px;border:1.5px solid var(--ink);box-shadow:3px 3px 0 rgba(30,27,22,.85)}
     .btn.secondary{background:var(--paper);color:var(--ink);font-weight:700;font-size:13px;box-shadow:2px 2px 0 rgba(30,27,22,.7)}
-    .btn.ghost{background:transparent;color:var(--accent);border:0;box-shadow:none;padding:8px 4px;min-height:auto;font-size:12.5px;font-weight:700}
+    .btn.ghost{background:transparent;color:var(--accent);border:0;box-shadow:none;padding:8px 4px;min-height:auto;font-size:12.5px;font-weight:600}
     .btn.danger{background:var(--danger)}
     .section-title .btn{min-height:36px;padding:7px 13px;font-size:12.5px}
     .split{display:flex;gap:9px;align-items:center;flex-wrap:wrap}
@@ -150,7 +151,7 @@
     .pill{display:inline-flex;align-items:center;min-height:30px;border-radius:999px;padding:6px 10px;background:var(--green-soft);border:1px solid rgba(30,27,22,.45);font-size:12px;font-weight:600;color:var(--ink)}
     .tabs{display:flex;gap:8px;overflow:auto;margin-bottom:12px;scrollbar-width:none}
     .tabs::-webkit-scrollbar{display:none}
-    .tab{white-space:nowrap;min-height:38px;padding:8px 14px;border-radius:999px;background:var(--paper);color:var(--muted);font-weight:700;font-size:13px;border:1.2px solid rgba(30,27,22,.45)}
+    .tab{white-space:nowrap;min-height:38px;padding:8px 14px;border-radius:999px;background:var(--paper);color:var(--muted);font-weight:600;font-size:13px;border:1.2px solid rgba(30,27,22,.45)}
     .tab.active{background:var(--ink);color:var(--paper);border-color:var(--ink);box-shadow:2px 2px 0 rgba(30,27,22,.4)}
     .stars{letter-spacing:1.5px;color:var(--accent);font-weight:900}
     .empty{padding:22px 12px;text-align:center;color:var(--muted);border:1.5px dashed rgba(30,27,22,.4);border-radius:var(--r);background:rgba(255,255,255,.55)}
@@ -177,7 +178,7 @@
 
     .mini-trackers{display:grid;grid-template-columns:1fr 1fr;gap:9px}
     .mini{padding:12px;border-radius:16px;background:var(--pink-soft);border:1.2px solid rgba(30,27,22,.7);display:flex;align-items:center;justify-content:space-between;gap:8px;box-shadow:2px 2px 0 rgba(30,27,22,.5)}
-    .mini span{font-size:13px;font-weight:700}
+    .mini span{font-size:13px;font-weight:600}
     .state{width:20px;height:20px;border-radius:50%;border:1.2px solid rgba(30,27,22,.5);background:#fff;position:relative;flex:0 0 auto}
     .state.done{background:var(--ok);border-color:var(--ink)}
     .state.done:after{content:"";position:absolute;left:6px;top:3px;width:5px;height:10px;border:solid #FFFEFA;border-width:0 2px 2px 0;transform:rotate(45deg)}
@@ -188,13 +189,13 @@
 
     /* ---------- 5. Календарь ---------- */
     .calendar-week,.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}
-    .calendar-week{margin-bottom:8px;color:var(--muted);font-size:11px;font-weight:700;text-align:center;letter-spacing:.05em}
-    .day{aspect-ratio:1/1;min-height:40px;border-radius:13px;background:var(--pink-soft);border:1.2px solid rgba(30,27,22,.35);color:var(--ink);font-weight:700;display:grid;place-items:center;transition:.15s}
+    .calendar-week{margin-bottom:8px;color:var(--muted);font-size:11px;font-weight:600;text-align:center;letter-spacing:.05em}
+    .day{aspect-ratio:1/1;min-height:40px;border-radius:13px;background:var(--pink-soft);border:1.2px solid rgba(30,27,22,.35);color:var(--ink);font-weight:600;display:grid;place-items:center;transition:.15s}
     .day.blank{opacity:0;pointer-events:none}
     .day.selected{outline:2.5px solid var(--ink);outline-offset:2px;transform:translateY(-1px);box-shadow:2px 3px 0 rgba(30,27,22,.7)}
     .day.today:not(.selected){outline:2px dashed rgba(214,51,108,.85);outline-offset:2px}
     .metric-calendar,.tracker-calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;margin:12px 0}
-    .metric-day,.tracker-day{min-height:44px;border-radius:13px;border:1px solid rgba(30,27,22,.3);background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:12px;font-weight:700;color:var(--muted)}
+    .metric-day,.tracker-day{min-height:44px;border-radius:13px;border:1px solid rgba(30,27,22,.3);background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:12px;font-weight:600;color:var(--muted)}
     .metric-day b,.tracker-day b{color:var(--ink);font-size:12px}
     .metric-day span{font-size:11px;color:var(--accent);max-width:100%;overflow:hidden;text-overflow:ellipsis}
     .metric-day.done,.tracker-day.done{background:rgba(95,127,76,.18);border-color:rgba(95,127,76,.55);color:var(--ok)}
@@ -206,7 +207,7 @@
     .nav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:min(520px,100%);height:var(--nav-h);padding:11px 10px calc(11px + env(safe-area-inset-bottom));background:rgba(255,254,250,.93);backdrop-filter:blur(16px);border-top:1.5px solid var(--ink);z-index:10}
     .nav-scroll{overflow-x:auto;display:flex;gap:6px;scrollbar-width:none;padding-bottom:2px;-webkit-overflow-scrolling:touch;touch-action:pan-x}
     .nav-scroll::-webkit-scrollbar{display:none}
-    .nav button{flex:0 0 auto;min-width:76px;height:56px;border-radius:18px;background:transparent;border:1.2px solid transparent;color:var(--muted);font-size:13.5px;font-weight:700;padding:0 10px}
+    .nav button{flex:0 0 auto;min-width:76px;height:56px;border-radius:18px;background:transparent;border:1.2px solid transparent;color:var(--muted);font-size:13.5px;font-weight:600;padding:0 10px}
     .nav button.active{color:#FFF5F8;background:var(--accent);border-color:var(--ink);box-shadow:2px 2px 0 rgba(30,27,22,.8)}
 
     /* ---------- 7. Модалка (нижний лист) ---------- */
@@ -288,7 +289,7 @@
   <main class="app">
     <div class="topbar"><div class="brand"><small>personal dashboard</small><h1>Life Mosaic</h1></div><button class="btn ghost today-btn" data-action="goToday">Today</button><div class="date-pill"><select id="monthSelect"></select><select id="yearSelect"></select></div></div>
     <section id="screen-month" class="screen active">
-      <div class="card" id="monthCalendarCard"><div class="cal-nav"><button class="month-nav" data-action="prevMonth" aria-label="Предыдущий месяц">‹</button><span id="calNavLabel" class="cal-nav-label"></span><button class="month-nav" data-action="nextMonth" aria-label="Следующий месяц">›</button></div><div class="calendar-week"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div><div class="calendar-grid" id="calendarGrid"></div></div>
+      <div class="card" id="monthCalendarCard"><div class="cal-body"><button class="month-nav cal-arrow" data-action="prevMonth" aria-label="Предыдущий месяц">‹</button><div class="cal-grid-wrap"><div class="calendar-week"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div><div class="calendar-grid" id="calendarGrid"></div></div><button class="month-nav cal-arrow" data-action="nextMonth" aria-label="Следующий месяц">›</button></div></div>
       <div class="card"><div class="section-title"><h2 id="selectedDayTitle" class="clickable" data-action="pickSelectedDate">Сегодня</h2></div><div class="mini-trackers" id="miniTrackers"></div></div>
       <div class="card"><div class="section-title"><h2 class="clickable nav-head" data-action="goGoals">Цели месяца</h2></div><div id="monthGoals"></div></div>
       <div class="card"><div class="section-title"><h2 class="clickable nav-head" data-action="goReading">Сейчас читаю</h2><button class="btn ghost" data-action="chooseBook">выбрать</button></div><div id="currentBook"></div></div>
