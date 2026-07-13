@@ -80,8 +80,9 @@
     .list-text{flex:1;font-size:15px;line-height:1.4;word-break:break-word}
     .list-text.done{text-decoration:line-through;color:var(--muted)}
     .list-del{flex:0 0 auto;background:transparent;border:0;box-shadow:none;color:var(--muted);font-size:15px;cursor:pointer;padding:4px 6px;min-height:auto}
-    .list-head-left{display:flex;align-items:center;gap:9px;min-width:0}
-    .list-move{background:transparent;border:0;box-shadow:none;padding:0;min-height:auto;cursor:pointer;flex:0 0 auto}
+    .list-head-left{display:flex;align-items:center;gap:6px;min-width:0}
+    .list-head-left>h3,.list-head-left>b{margin:0}
+    .list-move{background:transparent;border:0;box-shadow:none;padding:8px 12px 8px 4px;margin:-8px 0 -8px -4px;min-height:auto;cursor:pointer;flex:0 0 auto}
     .list-card.picked,.swipe-content:has(.list-move.picked){border-color:var(--accent);box-shadow:inset 0 0 0 1.5px var(--accent)}
     .list-card.picked .move-ic,.list-move.picked .move-ic{color:var(--accent);font-weight:800}
     .list-done-badge{color:var(--green);font-weight:600;margin-top:6px}
