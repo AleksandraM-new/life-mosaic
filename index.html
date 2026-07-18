@@ -78,7 +78,7 @@
     input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;appearance:none;margin:0}
     input[type=number]{-moz-appearance:textfield;appearance:textfield}
     .tracker-actions{margin-top:10px;justify-content:flex-start}
-    .cal-body{display:flex;align-items:center;gap:13px}
+    .cal-body{display:flex;align-items:center;gap:9px}
     .cal-grid-wrap{flex:1;min-width:0}
     .cal-arrow{flex:0 0 auto;font-size:24px;padding:6px 2px;color:var(--ink)}
     .list-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid rgba(30,27,22,.12)}
@@ -195,7 +195,7 @@
     .swatch{width:14px;height:14px;border-radius:50%;border:1px solid rgba(30,27,22,.35);flex:0 0 auto}
 
     /* ---------- 5. Календарь ---------- */
-    .calendar-week,.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}
+    .calendar-week,.calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px}
     .calendar-week{margin-bottom:8px;color:var(--muted);font-size:var(--fs-micro);font-weight:600;text-align:center;letter-spacing:.05em}
     .day{aspect-ratio:1/1;min-height:40px;border-radius:13px;background:var(--pink-soft);border:1.2px solid rgba(30,27,22,.35);color:var(--ink);font-weight:600;display:grid;place-items:center;transition:.15s}
     .day.blank{opacity:0;pointer-events:none}
@@ -214,7 +214,7 @@
     .nav{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:min(520px,100%);height:var(--nav-h);padding:11px 10px calc(11px + env(safe-area-inset-bottom));background:rgba(255,254,250,.93);backdrop-filter:blur(16px);border-top:1.5px solid var(--ink);z-index:10}
     .nav-scroll{overflow-x:auto;display:flex;gap:6px;scrollbar-width:none;padding-bottom:2px;-webkit-overflow-scrolling:touch;touch-action:pan-x}
     .nav-scroll::-webkit-scrollbar{display:none}
-    .nav button{flex:0 0 auto;min-width:76px;height:56px;border-radius:18px;background:transparent;border:1.2px solid transparent;color:var(--muted);font-size:var(--fs-ctrl);font-weight:600;padding:0 10px}
+    .nav button{flex:0 0 auto;min-width:76px;height:56px;border-radius:18px;background:transparent;border:1.2px solid transparent;color:var(--muted);font-size:var(--fs-body);font-weight:600;padding:0 10px}
     .nav button.active{color:#FFF5F8;background:var(--accent);border-color:var(--ink);box-shadow:2px 2px 0 rgba(30,27,22,.8)}
 
     /* ---------- 7. Модалка (нижний лист) ---------- */
@@ -287,7 +287,7 @@
     @keyframes monthRight{from{opacity:.25;transform:translateX(-42px) scale(.985)}to{opacity:1;transform:translateX(0) scale(1)}}
 
     /* ---------- 11. Адаптив ---------- */
-    @media(max-width:390px){.nav button{min-width:70px;padding:0 8px;font-size:var(--fs-ctrl)}}
+    @media(max-width:390px){.nav button{min-width:70px;padding:0 8px;font-size:var(--fs-body)}}
     @media(min-width:480px){.app{padding-left:18px;padding-right:18px}.day{min-height:48px}.emotion-grid{grid-template-columns:repeat(3,1fr)}}
 
   </style>
