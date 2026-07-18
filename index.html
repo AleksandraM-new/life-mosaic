@@ -37,7 +37,7 @@
       --r:16px;
       --rl:22px;
       /* Типографическая шкала */
-      --fs-hero:28px;   /* заголовок приложения (h1) */
+      --fs-hero:27px;   /* заголовок приложения (h1) */
       --fs-title:17px;  /* заголовки секций (h2) */
       --fs-body:15px;   /* основной текст, названия карточек, кнопки */
       --fs-ctrl:13px;   /* вкладки, навигация, вторичные кнопки */
@@ -52,7 +52,7 @@
     body{-webkit-font-smoothing:antialiased;overscroll-behavior:none;overflow-x:hidden;background:conic-gradient(#EDF2E0 90deg,#DDE7CC 90deg 180deg,#EDF2E0 180deg 270deg,#DDE7CC 270deg) 0 0/56px 56px fixed}
     button,input,textarea,select{font:inherit;color:inherit}
     button{border:0;cursor:pointer}
-    h1{font-size:var(--fs-hero);font-weight:900;margin:0;letter-spacing:-.04em}
+    h1{font-size:var(--fs-hero);font-weight:800;margin:0;letter-spacing:-.04em}
     h2{font-size:var(--fs-title);font-weight:700;margin:0;letter-spacing:-.02em}
     h3{font-size:var(--fs-body);font-weight:700;margin:0 0 10px}
     .hint,.tiny{color:var(--muted);font-size:var(--fs-meta);line-height:1.4;font-weight:400}
@@ -62,15 +62,15 @@
 
     /* ---------- 3. Каркас страницы ---------- */
     .app{min-height:100vh;padding:18px 14px calc(var(--nav-h) + 20px);max-width:520px;margin:0 auto}
-    .topbar{display:flex;align-items:center;justify-content:space-between;gap:2px;margin:4px 2px 18px}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:4px;margin:4px 2px 18px}
     .brand{line-height:1;flex:0 0 auto}
-    .brand small{display:block;color:var(--accent);font-size:var(--fs-micro);letter-spacing:.2em;text-transform:uppercase;margin-bottom:6px;font-weight:700}
-    .btn.ghost.today-btn{flex:0 0 auto;min-height:auto;padding:2px 3px;border:0;box-shadow:none;background:transparent;border-radius:0;font-size:var(--fs-ctrl);font-weight:800;color:var(--accent)}
+    .brand small{display:block;color:var(--accent);font-size:var(--fs-micro);letter-spacing:.05em;text-transform:uppercase;margin-bottom:6px;font-weight:700}
+    .btn.ghost.today-btn{flex:0 0 auto;min-height:auto;padding:2px 4px;border:0;box-shadow:none;background:transparent;border-radius:0;font-size:var(--fs-body);font-weight:800;color:var(--accent)}
     body:not(.on-month) .today-btn{display:none}
-    .date-pill{flex:0 0 auto;display:flex;gap:1px;align-items:center;justify-content:flex-end;background:var(--paper);border:1.2px solid var(--ink);border-radius:999px;padding:4px 7px;box-shadow:2px 2px 0 rgba(30,27,22,.8)}
+    .date-pill{flex:0 0 auto;display:flex;gap:1px;align-items:center;justify-content:flex-end;background:var(--paper);border:1.2px solid var(--ink);border-radius:999px;padding:5px 8px;box-shadow:2px 2px 0 rgba(30,27,22,.8)}
     body:not(.on-month) .date-pill{display:none}
-    .date-pill select{appearance:none;background:transparent;border:0;outline:0;font-size:var(--fs-micro);font-weight:700;padding:3px 0;min-height:auto;width:70px;max-width:70px;text-align:right;box-shadow:none}
-    .date-pill select#yearSelect{width:30px;max-width:30px}
+    .date-pill select{appearance:none;background:transparent;border:0;outline:0;font-size:var(--fs-meta);font-weight:700;padding:3px 0;min-height:auto;width:70px;max-width:70px;text-align:right;box-shadow:none}
+    .date-pill select#yearSelect{width:34px;max-width:34px}
     .month-nav{background:transparent;border:0;box-shadow:none;color:var(--ink);font-size:19px;font-weight:800;line-height:1;padding:2px 5px;min-height:auto;cursor:pointer}
     .month-nav:active{transform:translateY(1px)}
     .metric-total{font-weight:400;color:var(--accent);margin-top:9px}
