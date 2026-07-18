@@ -62,17 +62,15 @@
 
     /* ---------- 3. Каркас страницы ---------- */
     .app{min-height:100vh;padding:18px 14px calc(var(--nav-h) + 20px);max-width:520px;margin:0 auto}
-    .topbar{display:flex;align-items:center;justify-content:space-between;gap:5px;margin:4px 2px 18px}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:2px;margin:4px 2px 18px}
     .brand{line-height:1;flex:0 0 auto}
     .brand small{display:block;color:var(--accent);font-size:var(--fs-micro);letter-spacing:.2em;text-transform:uppercase;margin-bottom:6px;font-weight:700}
-    .btn.ghost.today-btn{flex:0 0 auto;min-height:auto;padding:2px 4px;border:0;box-shadow:none;background:transparent;border-radius:0;font-size:var(--fs-title);font-weight:800;color:var(--accent)}
+    .btn.ghost.today-btn{flex:0 0 auto;min-height:auto;padding:2px 3px;border:0;box-shadow:none;background:transparent;border-radius:0;font-size:var(--fs-ctrl);font-weight:800;color:var(--accent)}
     body:not(.on-month) .today-btn{display:none}
-    .date-pill{flex:0 0 auto;display:flex;gap:1px;align-items:center;justify-content:flex-end;background:var(--paper);border:1.2px solid var(--ink);border-radius:999px;padding:6px 7px;box-shadow:2px 2px 0 rgba(30,27,22,.8)}
+    .date-pill{flex:0 0 auto;display:flex;gap:1px;align-items:center;justify-content:flex-end;background:var(--paper);border:1.2px solid var(--ink);border-radius:999px;padding:4px 7px;box-shadow:2px 2px 0 rgba(30,27,22,.8)}
     body:not(.on-month) .date-pill{display:none}
-    .date-pill select{appearance:none;background:transparent;border:0;outline:0;font-size:var(--fs-meta);font-weight:700;padding:3px 0;min-height:auto;width:70px;max-width:70px;text-align:right;box-shadow:none}
-    .date-pill select#yearSelect{width:40px;max-width:40px}
-    .topbar-right{flex:0 0 auto;display:flex;flex-direction:column;align-items:flex-end;gap:7px}
-    body:not(.on-month) .topbar-right{flex-direction:row;align-items:center}
+    .date-pill select{appearance:none;background:transparent;border:0;outline:0;font-size:var(--fs-micro);font-weight:700;padding:3px 0;min-height:auto;width:70px;max-width:70px;text-align:right;box-shadow:none}
+    .date-pill select#yearSelect{width:30px;max-width:30px}
     .month-nav{background:transparent;border:0;box-shadow:none;color:var(--ink);font-size:19px;font-weight:800;line-height:1;padding:2px 5px;min-height:auto;cursor:pointer}
     .month-nav:active{transform:translateY(1px)}
     .metric-total{font-weight:400;color:var(--accent);margin-top:9px}
@@ -120,6 +118,7 @@
     .btn.ghost{background:transparent;color:var(--accent);border:0;box-shadow:none;padding:8px 4px;min-height:auto;font-size:var(--fs-meta);font-weight:600}
     .btn.danger{background:var(--danger)}
     .section-title .btn{min-height:36px;padding:7px 13px;font-size:var(--fs-meta)}
+    .section-title [data-action="chooseBook"],.section-title [data-action="chooseWatch"]{font-size:var(--fs-ctrl)}
     .split{display:flex;gap:9px;align-items:center;flex-wrap:wrap}
     .modal-actions{display:flex;align-items:center;gap:16px;margin-top:20px}
     .goal-addsub{margin-top:12px}
@@ -161,7 +160,7 @@
     .pill{display:inline-flex;align-items:center;min-height:30px;border-radius:999px;padding:6px 10px;background:var(--green-soft);border:1px solid rgba(30,27,22,.45);font-size:var(--fs-meta);font-weight:600;color:var(--ink)}
     .tabs{display:flex;gap:8px;overflow:auto;margin-bottom:12px;scrollbar-width:none}
     .tabs::-webkit-scrollbar{display:none}
-    .tab{white-space:nowrap;min-height:38px;padding:8px 14px;border-radius:999px;background:var(--paper);color:var(--muted);font-weight:600;font-size:var(--fs-ctrl);border:1.2px solid rgba(30,27,22,.45)}
+    .tab{white-space:nowrap;min-height:38px;padding:8px 14px;border-radius:999px;background:var(--paper);color:var(--ink);font-weight:600;font-size:var(--fs-ctrl);border:1.2px solid rgba(30,27,22,.45)}
     .tab.active{background:var(--ink);color:var(--paper);border-color:var(--ink);box-shadow:2px 2px 0 rgba(30,27,22,.4)}
     .stars{letter-spacing:1.5px;color:var(--accent);font-weight:900}
     .empty{padding:22px 12px;text-align:center;color:var(--muted);border:1.5px dashed rgba(30,27,22,.4);border-radius:var(--r);background:rgba(255,255,255,.55)}
@@ -268,7 +267,7 @@
     .goal-desc{margin:11px 0}
     .goal-subs{display:flex;flex-wrap:wrap;gap:5px 8px;margin-top:14px}
     .balance-title{display:block}
-    .balance-date{margin-top:5px;font-size:var(--fs-body);font-weight:800;color:var(--ink);cursor:pointer;display:inline-block}
+    .balance-date{margin-top:5px;font-size:var(--fs-body);font-weight:700;color:var(--ink);cursor:pointer;display:inline-block}
     .balance-hint{margin-bottom:10px;color:var(--muted);font-size:var(--fs-meta);line-height:1.35}
     .balance-hint.tiny{font-size:var(--fs-micro);white-space:nowrap}
     .balance-hint:not(.tiny){color:var(--accent);font-weight:700}
@@ -297,7 +296,7 @@
 </head>
 <body class="on-month">
   <main class="app">
-    <div class="topbar"><div class="brand"><small>personal dashboard</small><h1>Life Mosaic</h1></div><div class="topbar-right"><button class="btn ghost today-btn" data-action="goToday">Today</button><div class="date-pill"><select id="monthSelect"></select><select id="yearSelect"></select></div></div></div>
+    <div class="topbar"><div class="brand"><small>personal dashboard</small><h1>Life Mosaic</h1></div><button class="btn ghost today-btn" data-action="goToday">Today</button><div class="date-pill"><select id="monthSelect"></select><select id="yearSelect"></select></div></div>
     <section id="screen-month" class="screen active">
       <div class="card" id="monthCalendarCard"><div class="cal-body"><button class="month-nav cal-arrow" data-action="prevMonth" aria-label="Предыдущий месяц">‹</button><div class="cal-grid-wrap"><div class="calendar-week"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div><div class="calendar-grid" id="calendarGrid"></div></div><button class="month-nav cal-arrow" data-action="nextMonth" aria-label="Следующий месяц">›</button></div></div>
       <div class="card"><div class="section-title"><h2 id="selectedDayTitle" class="clickable" data-action="pickSelectedDate">Сегодня</h2></div><div class="mini-trackers" id="miniTrackers"></div></div>
@@ -306,10 +305,10 @@
       <div class="card"><div class="section-title"><h2 class="clickable nav-head" data-action="goWatch">Сейчас смотрю</h2><button class="btn ghost" data-action="chooseWatch">выбрать</button></div><div id="currentWatch"></div></div>
     </section>
     <section id="screen-pulse" class="screen"><div class="card"><div class="section-title"><h2>Активность дня</h2><span class="pill" id="pulseDate"></span></div><div class="swipe"><div class="swipe-content clickable" data-action="openBuiltinMetric" data-kind="steps"><b>Шаги</b><div class="tiny">число</div><div class="field"><input id="stepsInput" type="number" min="0" inputmode="numeric" placeholder="Например, 4820"></div><div class="tiny metric-total" id="stepsTotal"></div></div></div><div class="swipe"><div class="swipe-content clickable" data-action="openBuiltinMetric" data-kind="reading"><b>Чтение за день</b><div class="tiny">минуты</div><div class="field"><input id="readingInput" type="number" min="0" inputmode="numeric" placeholder="20"></div><div class="tiny metric-total" id="readingTotal"></div></div></div></div><div class="card"><div class="section-title"><h2>Свои метрики</h2><button class="btn secondary" data-action="addMetric">Добавить</button></div><div id="customMetrics"></div></div></section>
-    <section id="screen-trackers" class="screen"><div class="card"><div class="section-title"><div class="title-date"><h2>Trackers</h2><span class="pill" id="trackersDate"></span></div><button class="btn secondary" data-action="addTracker">Добавить</button></div><div id="trackerList"></div></div><div class="card"><div class="section-title"><h2>Мои успехи</h2><span class="hint">архив достигнутого</span></div><div id="successList"></div></div></section>
+    <section id="screen-trackers" class="screen"><div class="card"><div class="section-title"><div class="title-date"><h2>Трекеры привычек</h2><span class="pill" id="trackersDate"></span></div><button class="btn secondary" data-action="addTracker">Добавить</button></div><div id="trackerList"></div></div><div class="card"><div class="section-title"><h2>Мои успехи</h2><span class="hint">архив достигнутого</span></div><div id="successList"></div></div></section>
     <section id="screen-balance" class="screen"><div class="card"><div class="section-title balance-title"><div><h2>Колесо жизненного баланса</h2><div class="balance-date clickable" id="balanceDateEl" data-action="pickBalanceDate"></div></div></div><div id="balanceWheel"></div><div id="balanceList"></div><div class="balance-actions"><button class="btn secondary" data-action="addBalanceSector">Добавить сферу</button></div></div></section>
-    <section id="screen-goals" class="screen"><div class="card"><div class="section-title"><div class="title-date"><h2>Goals</h2><span class="pill" id="goalsDate"></span></div><button class="btn secondary" data-action="addGoal">Добавить</button></div><div id="goalsList"></div></div></section>
-    <section id="screen-library" class="screen"><div class="tabs"><button class="tab active" data-sub="reading">Reading</button><button class="tab" data-sub="watch">Films & Series</button></div><div id="sub-reading" class="subscreen active"><div class="card"><div class="section-title"><h2>Сейчас читаю</h2><button class="btn secondary" data-action="addBook">Добавить</button></div><div id="activeBooks"></div></div><div class="card"><div class="section-title"><h2>Библиотека</h2><button class="btn secondary" data-action="addArchiveBook">Добавить в библиотеку</button></div><div id="bookArchive"></div></div></div><div id="sub-watch" class="subscreen"><div class="card"><div class="section-title"><h2>Сейчас смотрю</h2><button class="btn secondary" data-action="addWatch">Добавить</button></div><div id="activeWatch"></div></div><div class="card"><div class="section-title"><h2>Фильмотека</h2><button class="btn secondary" data-action="addArchiveWatch">Добавить в фильмотеку</button></div><div id="watchArchive"></div></div></div></section>
+    <section id="screen-goals" class="screen"><div class="card"><div class="section-title"><div class="title-date"><h2>Цели в фокусе</h2><span class="pill" id="goalsDate"></span></div><button class="btn secondary" data-action="addGoal">Добавить</button></div><div id="goalsList"></div></div></section>
+    <section id="screen-library" class="screen"><div class="tabs"><button class="tab active" data-sub="reading">Чтение</button><button class="tab" data-sub="watch">Фильмы/Сериалы</button></div><div id="sub-reading" class="subscreen active"><div class="card"><div class="section-title"><h2>Сейчас читаю</h2><button class="btn secondary" data-action="addBook">Добавить</button></div><div id="activeBooks"></div></div><div class="card"><div class="section-title"><h2>Библиотека</h2><button class="btn secondary" data-action="addArchiveBook">Добавить в библиотеку</button></div><div id="bookArchive"></div></div></div><div id="sub-watch" class="subscreen"><div class="card"><div class="section-title"><h2>Сейчас смотрю</h2><button class="btn secondary" data-action="addWatch">Добавить</button></div><div id="activeWatch"></div></div><div class="card"><div class="section-title"><h2>Фильмотека</h2><button class="btn secondary" data-action="addArchiveWatch">Добавить в фильмотеку</button></div><div id="watchArchive"></div></div></div></section>
     <section id="screen-lists" class="screen"><div class="card"><div class="section-title"><div><h2>To-do lists</h2><div class="hint">мои чек-листы</div></div><button class="btn secondary" data-action="addList">Добавить</button></div><div id="listsList"></div></div></section>
     <section id="screen-dreams" class="screen"><div class="card"><div class="section-title"><div><h2>Дневник желаний</h2><div class="hint">о чём я мечтаю</div></div><button class="btn secondary" data-action="addDream">Добавить</button></div><h3 class="dreams-sub">Сейчас мечтаю</h3><div id="dreamList"></div></div><div class="card"><div class="section-title"><h2>Сбывшееся</h2><button class="btn secondary" data-action="addFulfilledDream">Добавить в сбывшееся</button></div><div id="dreamArchiveFolder"></div></div></section>
     <section id="screen-insights" class="screen"><div class="card"><div class="section-title"><div><h2>Insights</h2><div class="hint">мысли из дневника</div></div><button class="close hidden" id="insightCloseBtn" data-action="closeInsightMonth">×</button></div><div id="insightsList"></div></div></section>
