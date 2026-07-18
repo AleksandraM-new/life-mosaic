@@ -70,7 +70,9 @@
     .date-pill{flex:0 0 auto;display:flex;gap:1px;align-items:center;justify-content:flex-end;background:var(--paper);border:1.2px solid var(--ink);border-radius:999px;padding:6px 7px;box-shadow:2px 2px 0 rgba(30,27,22,.8)}
     body:not(.on-month) .date-pill{display:none}
     .date-pill select{appearance:none;background:transparent;border:0;outline:0;font-size:var(--fs-meta);font-weight:700;padding:3px 0;min-height:auto;width:70px;max-width:70px;text-align:right;box-shadow:none}
-    .date-pill select#yearSelect{width:32px;max-width:32px}
+    .date-pill select#yearSelect{width:40px;max-width:40px}
+    .topbar-right{flex:0 0 auto;display:flex;flex-direction:column;align-items:flex-end;gap:7px}
+    body:not(.on-month) .topbar-right{flex-direction:row;align-items:center}
     .month-nav{background:transparent;border:0;box-shadow:none;color:var(--ink);font-size:19px;font-weight:800;line-height:1;padding:2px 5px;min-height:auto;cursor:pointer}
     .month-nav:active{transform:translateY(1px)}
     .metric-total{font-weight:400;color:var(--accent);margin-top:9px}
@@ -295,7 +297,7 @@
 </head>
 <body class="on-month">
   <main class="app">
-    <div class="topbar"><div class="brand"><small>personal dashboard</small><h1>Life Mosaic</h1></div><button class="btn ghost today-btn" data-action="goToday">Today</button><div class="date-pill"><select id="monthSelect"></select><select id="yearSelect"></select></div></div>
+    <div class="topbar"><div class="brand"><small>personal dashboard</small><h1>Life Mosaic</h1></div><div class="topbar-right"><button class="btn ghost today-btn" data-action="goToday">Today</button><div class="date-pill"><select id="monthSelect"></select><select id="yearSelect"></select></div></div></div>
     <section id="screen-month" class="screen active">
       <div class="card" id="monthCalendarCard"><div class="cal-body"><button class="month-nav cal-arrow" data-action="prevMonth" aria-label="Предыдущий месяц">‹</button><div class="cal-grid-wrap"><div class="calendar-week"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div><div class="calendar-grid" id="calendarGrid"></div></div><button class="month-nav cal-arrow" data-action="nextMonth" aria-label="Следующий месяц">›</button></div></div>
       <div class="card"><div class="section-title"><h2 id="selectedDayTitle" class="clickable" data-action="pickSelectedDate">Сегодня</h2></div><div class="mini-trackers" id="miniTrackers"></div></div>
@@ -316,7 +318,7 @@
   <div class="modal" id="modal"><div class="sheet"><div class="sheet-head"><h2 id="modalTitle">Day</h2><button class="close" id="closeModal">×</button></div><div id="modalBody"></div></div></div>
   <script>
 
-    const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const months=['January','February','March','April','May','June','July','August','September','October','November','December'];
     const ruMonths=['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'];
     const ruMonthsGen=['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
     const emotions=[['calm','спокойствие','#fff7a3'],['joy','радость','#f4f94d'],['inspiration','вдохновение','#22a070'],['interest','интерес','#9cfcdf'],['courage','смелость','#22a0ff'],['surprise','удивление','#7df53d'],['admiration','восхищение','#ff70d9'],['pride','гордость','#47fffc'],['laziness','лень','#c9c8ac'],['tiredness','усталость','#D5D5D5'],['sadness','грусть','#97b8c9'],['anxiety','тревога','#c3bef0'],['irritation','раздражение','#f46060'],['anger','злость','#b0360d']];
@@ -383,7 +385,7 @@
     
     function renderMonthGoals(){monthGoals.innerHTML=data.goals.map(g=>{const gp=goalProgress(g);return`<div class="goal-row clickable" data-action="openGoal" data-id="${g.id}"><div style="flex:1"><b>${g.title}</b><div class="progress"><i style="width:${gp}%"></i></div></div><strong>${gp}%</strong></div>`}).join('')||'<div class="empty">Целей пока нет</div>'}
     
-    function mediaCard(obj,empty){if(!obj)return`<div class="empty">${empty}</div>`;const isWatch=!!obj.type;const meta=obj.author||obj.director||(isWatch?'режиссёр не указан':'не указано');let pct;if(isWatch){if(obj.type==='сериал'){const t=seriesTotals(obj);pct=Math.min(100,(t.watched/(t.episodes||1))*100)}else{pct=obj.status==='закончен'?100:50}}else{pct=Math.min(100,(obj.done||0)/(obj.total||1)*100)}return`<div class="swipe"><div class="swipe-content"><b>${obj.title}</b><div class="tiny">${meta}</div><div class="progress"><i style="width:${pct}%"></i></div></div></div>`}
+    function mediaCard(obj,empty){if(!obj)return`<div class="empty">${empty}</div>`;const isWatch=!!obj.type;const meta=obj.author||obj.director||(isWatch?'режиссёр не указан':'не указано');let pct;if(isWatch){if(obj.type==='сериал'){const t=seriesTotals(obj);pct=Math.min(100,(t.watched/(t.episodes||1))*100)}else{pct=obj.status==='закончен'?100:50}}else{pct=Math.min(100,(obj.done||0)/(obj.total||1)*100)}return`<div class="swipe"><div class="swipe-content clickable" data-action="${isWatch?'editWatch':'editBook'}" data-id="${obj.id}"><b>${obj.title}</b><div class="tiny">${meta}</div><div class="progress"><i style="width:${pct}%"></i></div></div></div>`}
     function renderCurrentMedia(){const book=data.books.find(b=>b.id===data.currentBookId&&b.status!=='прочитано');const watch=data.watches.find(w=>w.id===data.currentWatchId&&w.status!=='закончен');currentBook.innerHTML=mediaCard(book,'Нет активной книги');currentWatch.innerHTML=mediaCard(watch,'Нет активного просмотра')}
     function swipeCard(html,delAction,id,openAction){return`<div class="swipe"><div class="swipe-content ${openAction?'clickable':''}" ${openAction?`data-action="${openAction}" data-id="${id}"`:''}>${html}</div></div>`}
     function swapArr(kind,goal){return kind==='watch'?data.watches:kind==='book'?data.books:kind==='goal'?data.goals:kind==='metric'?data.metrics:kind==='tracker'?data.trackers:kind==='sub'?((data.goals.find(g=>g.id===goal)||{}).sub):null}
