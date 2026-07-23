@@ -1,0 +1,16 @@
+{
+  "name": "Life Mosaic",
+  "short_name": "Life Mosaic",
+  "description": "Личный трекер жизни: календарь эмоций, цели, привычки, книги и фильмы, колесо баланса.",
+  "lang": "ru",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#E7EEDC",
+  "theme_color": "#E7EEDC",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
