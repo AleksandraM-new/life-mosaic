@@ -237,7 +237,7 @@
     .balance-wrap{display:flex;justify-content:center;margin:10px 0 16px;padding:0 6px}
     .balance-wrap{display:flex;justify-content:center;margin:6px -10px 16px;padding:0}
     .balance-svg{width:100%;max-width:420px;height:auto}
-    .balance-label{font-size:var(--fs-micro);font-weight:700;fill:var(--ink)}
+    .balance-label{font-weight:700;fill:var(--ink)}
     .balance-num{font-size:var(--fs-meta);font-weight:800;fill:#1E1B16}
     .balance-sector{margin-bottom:10px}
     .balance-sector .sector-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:2px}
