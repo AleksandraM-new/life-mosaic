@@ -241,7 +241,7 @@
     .balance-num{font-size:var(--fs-meta);font-weight:800;fill:#1E1B16}
     .balance-sector{margin-bottom:10px}
     .balance-sector .sector-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:2px}
-    .balance-desc{color:var(--muted);margin:0 0 8px 29px}
+    .balance-desc{color:var(--muted);margin:0 0 8px 0}
     .balance-slider{display:flex;align-items:center;gap:10px}
     .balance-slider input[type=range]{flex:1}
     .balance-slider strong{width:24px;text-align:right;font-size:var(--fs-body)}
